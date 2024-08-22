@@ -16,7 +16,7 @@ export default function Address({ navigation }) {
             return;
         }
 
-        setAddress({ ...address, street, city, state, zip }); // Update the address state
+        setAddress({ ...address, street, city, state, zip }); 
         navigation.navigate('Card');
     };
 
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     button: {
-        backgroundColor: '#007BFF',
+        backgroundColor: '#ff6300',
         paddingVertical: 15,
         borderRadius: 8,
         alignItems: 'center',

@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import { Authentication } from '../App';
 
@@ -66,33 +66,32 @@ const food = [
 ];
 
 export default function Menu() {
-    const {cart,setCart} = useContext(Authentication);
+  const { cart, setCart, isDarkTheme } = useContext(Authentication);
 
-    const addToCart = (item) => {
-        const itemInCart = cart.find(cartItem => cartItem.name === item.name);
-    
-        if (itemInCart) {
-          Alert.alert(`${item.name} has been added to your cart....Go to cart to add quantity`);
-        } else {
-          setCart((prevCart) => [...prevCart, item]);
-          Alert.alert(`${item.name} has been added to your cart!`);
-        }
-      };
+  const addToCart = (item) => {
+    const itemInCart = cart.find(cartItem => cartItem.name === item.name);
+
+    if (itemInCart) {
+      Alert.alert(`${item.name} has been added to your cart....Go to cart to add quantity`);
+    } else {
+      setCart((prevCart) => [...prevCart, item]);
+      Alert.alert(`${item.name} has been added to your cart!`);
+    }
+  };
+
   return (
-    <ScrollView style={styles.container}>
-      {
-        food.map((items, index) => (
-          <View key={index} style={styles.card}>
-            <Image source={items.img} style={styles.image} />
-            <Text style={styles.title}>{items.name}</Text>
-            <Text style={styles.title}>{items.description}</Text>
-            <Text style={styles.price}>R{items.price.toFixed(2)}</Text>
-            <TouchableOpacity style={styles.button} onPress={() => addToCart(items)}>
-              <Text style={styles.buttonText}>ADD TO CART</Text>
-            </TouchableOpacity>
-          </View>
-        ))
-      }
+    <ScrollView style={isDarkTheme ? styles.darkContainer : styles.container}>
+      {food.map((items, index) => (
+        <View key={index} style={isDarkTheme ? styles.darkCard : styles.card}>
+          <Image source={items.img} style={styles.image} />
+          <Text style={isDarkTheme ? styles.darkTitle : styles.title}>{items.name}</Text>
+          <Text style={isDarkTheme ? styles.darkDescription : styles.description}>{items.description}</Text>
+          <Text style={isDarkTheme ? styles.darkPrice : styles.price}>R{items.price.toFixed(2)}</Text>
+          <TouchableOpacity style={styles.button} onPress={() => addToCart(items)}>
+            <Text style={styles.buttonText}>ADD TO CART</Text>
+          </TouchableOpacity>
+        </View>
+      ))}
     </ScrollView>
   );
 }
@@ -100,9 +99,20 @@ export default function Menu() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+  },
+  darkContainer: {
+    flex: 1,
+    backgroundColor: '#222', 
   },
   card: {
     backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 20,
+  },
+  darkCard: {
+    backgroundColor: '#333', 
     borderRadius: 10,
     padding: 10,
     marginBottom: 20,
@@ -117,9 +127,29 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
   },
+  darkTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  description: {
+    fontSize: 16,
+    color: '#666',
+    marginTop: 5,
+  },
+  darkDescription: {
+    fontSize: 16,
+    color: '#aaa', 
+    marginTop: 5,
+  },
   price: {
     fontSize: 16,
     color: '#666',
+    marginTop: 5,
+  },
+  darkPrice: {
+    fontSize: 16,
+    color: '#fff', 
     marginTop: 5,
   },
   button: {
@@ -134,3 +164,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+

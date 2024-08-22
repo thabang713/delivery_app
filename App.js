@@ -20,8 +20,9 @@ export default function App() {
   const [address, setAddress] = useState({ street: '', city: '', state: '' ,zip:''});
   const [card, setCard] = useState({ cardNumber: '', exp: '', cvv: '' });
   const [cart, setCart] = useState([]);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
   return (
-    <Authentication.Provider value={{user,address,card,setAddress,setCard,setUser,cart,setCart}}>
+    <Authentication.Provider value={{user,address,card,setAddress,setCard,setUser,cart,setCart,setIsDarkTheme,isDarkTheme}}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Setup">
           <Stack.Screen 

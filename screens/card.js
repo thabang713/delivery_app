@@ -15,8 +15,8 @@ export default function Card({ navigation }) {
             return;
         }
 
-        setCard({ ...card, cardNumber, exp, cvv }); // Update the card information in context
-        navigation.navigate('Tab'); // Navigate to the next screen
+        setCard({ ...card, cardNumber, exp, cvv }); 
+        navigation.navigate('Tab'); 
     };
 
     return (
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     button: {
-        backgroundColor: '#007BFF',
+        backgroundColor: '#ff6300',
         paddingVertical: 15,
         borderRadius: 8,
         alignItems: 'center',

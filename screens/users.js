@@ -15,7 +15,7 @@ export default function User({ navigation }) {
             return;
         }
 
-        setUser({ ...user, name, email, phone });  // Update the user state
+        setUser({ ...user, name, email, phone }); 
         navigation.navigate('Address');
     };
 
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     button: {
-        backgroundColor: '#007BFF',
+        backgroundColor: '#ff6300',
         paddingVertical: 15,
         borderRadius: 8,
         alignItems: 'center',
